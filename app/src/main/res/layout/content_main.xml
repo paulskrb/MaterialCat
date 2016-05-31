@@ -26,6 +26,7 @@
         >
 
         <ImageView
+            android:id="@+id/babyGirlImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/babygirl2"
@@ -34,7 +35,6 @@
 
         <LinearLayout
             android:id="@+id/babygirlNameHolder"
-            android:background="?attr/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_gravity="bottom"
@@ -65,6 +65,7 @@
         card_view:cardElevation="5dp">
 
         <ImageView
+            android:id="@+id/rockoImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/rocko2"
@@ -73,7 +74,6 @@
 
         <LinearLayout
             android:id="@+id/rockoNameHolder"
-            android:background="?attr/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_gravity="bottom"

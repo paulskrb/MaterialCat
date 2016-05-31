@@ -1,9 +1,12 @@
 package com.example.bearg.designmaterial;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.graphics.Palette;
 import android.support.v7.widget.CardView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -14,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity
@@ -21,6 +25,8 @@ public class MainActivity extends AppCompatActivity
 
     private CardView mBabyGirlCard;
     private CardView mRockoCard;
+    private ImageView mBabyGirlImage;
+    private ImageView mRockoImage;
     public static final String CAT_KEY = "com.example.bearg.designmaterial.CAT_ID";
 
     @Override
@@ -60,6 +66,49 @@ public class MainActivity extends AppCompatActivity
                 startActivity(intent);
             }
         });
+
+        mBabyGirlImage = (ImageView) findViewById(R.id.babyGirlImage);
+        mRockoImage = (ImageView) findViewById(R.id.rockoImage);
+
+        BitmapDrawable babyGirlImageDrawable = (BitmapDrawable) mBabyGirlImage.getDrawable();
+        Bitmap babyGirlPhoto = babyGirlImageDrawable.getBitmap();
+        colorize(babyGirlPhoto, R.id.babyGirlImage);
+
+        BitmapDrawable rockoImageDrawable = (BitmapDrawable) mRockoImage.getDrawable();
+        Bitmap rockoPhoto = rockoImageDrawable.getBitmap();
+        colorize(rockoPhoto, R.id.rockoImage);
+
+    }
+
+    private void colorize(final Bitmap photo, final int whichPhoto) {
+        Palette.from(photo).generate(new Palette.PaletteAsyncListener() {
+            @Override
+            public void onGenerated(Palette palette) {
+                applyPalette(palette, whichPhoto);
+            }
+        });
+    }
+
+    private void applyPalette(Palette palette, int whichPhoto) {
+
+        // get the theme primary color. will be used as a fallback if good palette match
+        // can't be found
+        final int primaryColor = ColorUtils.getThemeColor(this, R.attr.colorPrimary);
+
+        if (whichPhoto == R.id.babyGirlImage) {
+            LinearLayout babygirlNameHolder = (LinearLayout) findViewById(R.id.babygirlNameHolder);
+            babygirlNameHolder.setBackgroundColor(palette.getDarkVibrantColor(primaryColor));
+
+        }
+
+        else if (whichPhoto == R.id.rockoImage) {
+            LinearLayout rockoNameHolder = (LinearLayout) findViewById(R.id.rockoNameHolder);
+            rockoNameHolder.setBackgroundColor(palette.getMutedColor(primaryColor));
+        }
+
+        else {
+            throw new IllegalStateException("whichPhoto was of neither cat");
+        }
 
     }
 
