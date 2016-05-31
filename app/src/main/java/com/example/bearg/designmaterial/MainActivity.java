@@ -3,9 +3,12 @@ package com.example.bearg.designmaterial;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.CardView;
 import android.view.View;
@@ -48,13 +51,28 @@ public class MainActivity extends AppCompatActivity
 
         ///////////////      BEGIN CODE ADDED BY ME     ///////////////////
 
+        mBabyGirlImage = (ImageView) findViewById(R.id.babyGirlImage);
+        mRockoImage = (ImageView) findViewById(R.id.rockoImage);
+
         mBabyGirlCard = (CardView) findViewById(R.id.babygirlCard);
         mBabyGirlCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, CatDetailActivity.class);
                 intent.putExtra(CAT_KEY, 0);
-                startActivity(intent);
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    ActivityOptionsCompat options = ActivityOptionsCompat
+                            .makeSceneTransitionAnimation(MainActivity.this,
+                                    mBabyGirlImage, getString(R.string.transition_image_view_name));
+
+                    startActivity(intent, options.toBundle());
+                }
+
+                else {
+                    startActivity(intent);
+                }
+
             }
         });
 
@@ -64,12 +82,21 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, CatDetailActivity.class);
                 intent.putExtra(CAT_KEY, 1);
-                startActivity(intent);
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    ActivityOptionsCompat options = ActivityOptionsCompat
+                            .makeSceneTransitionAnimation(MainActivity.this,
+                                    mRockoImage, getString(R.string.transition_image_view_name));
+
+                    startActivity(intent, options.toBundle());
+                }
+
+                else {
+                    startActivity(intent);
+                }
+
             }
         });
-
-        mBabyGirlImage = (ImageView) findViewById(R.id.babyGirlImage);
-        mRockoImage = (ImageView) findViewById(R.id.rockoImage);
 
         BitmapDrawable babyGirlImageDrawable = (BitmapDrawable) mBabyGirlImage.getDrawable();
         Bitmap babyGirlPhoto = babyGirlImageDrawable.getBitmap();

@@ -1,14 +1,12 @@
 <resources>
 
-    <!-- had to change statusBarColor from transparent to a color to get toolbar to scroll
-    into status bar properly -->
     <style name="AppTheme.NoActionBar" parent="AppTheme">
-        <!--
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-        -->
+
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
+
+        <!-- used on API 21+ for shared elements transitions -->
+        <item name="android:windowContentTransitions">true</item>
     </style>
 
 

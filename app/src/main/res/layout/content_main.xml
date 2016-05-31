@@ -30,6 +30,7 @@
 
         <ImageView
             android:id="@+id/babyGirlImage"
+            android:transitionName="@string/transition_image_view_name"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/babygirl2"
@@ -75,6 +76,7 @@
 
         <ImageView
             android:id="@+id/rockoImage"
+            android:transitionName="@string/transition_image_view_name"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="2dp"
