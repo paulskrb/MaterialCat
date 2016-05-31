@@ -19,6 +19,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -96,14 +97,14 @@ public class MainActivity extends AppCompatActivity
         final int primaryColor = ColorUtils.getThemeColor(this, R.attr.colorPrimary);
 
         if (whichPhoto == R.id.babyGirlImage) {
-            LinearLayout babygirlNameHolder = (LinearLayout) findViewById(R.id.babygirlNameHolder);
-            babygirlNameHolder.setBackgroundColor(palette.getDarkVibrantColor(primaryColor));
+            TextView babyGirlNameText = (TextView) findViewById(R.id.babyGirlNameText);
+            babyGirlNameText.setTextColor(palette.getDarkMutedColor(primaryColor));
 
         }
 
         else if (whichPhoto == R.id.rockoImage) {
-            LinearLayout rockoNameHolder = (LinearLayout) findViewById(R.id.rockoNameHolder);
-            rockoNameHolder.setBackgroundColor(palette.getMutedColor(primaryColor));
+            TextView rockoNameText = (TextView) findViewById(R.id.rockoNameText);
+            rockoNameText.setTextColor(palette.getLightMutedColor(primaryColor));
         }
 
         else {
