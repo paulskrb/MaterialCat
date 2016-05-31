@@ -1,5 +1,6 @@
 package com.example.bearg.designmaterial;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -11,6 +12,9 @@ import android.widget.ImageView;
 
 public class CatDetailActivity extends AppCompatActivity {
 
+    private ImageView backdropCat;
+    private CollapsingToolbarLayout ctl;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,21 +24,33 @@ public class CatDetailActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        CollapsingToolbarLayout ctl = (CollapsingToolbarLayout)
+        ctl = (CollapsingToolbarLayout)
                 findViewById(R.id.collapsing_toolbar);
-        ctl.setTitle("Cat Detail");
 
-        ImageView catView = (ImageView) findViewById(R.id.backdrop);
-        catView.setImageResource(R.drawable.rocko2);
+        setupCollapsingToolbarDisplay();
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+    }
+
+    private void setupCollapsingToolbarDisplay() {
+        Intent intent = getIntent();
+        int choice = intent.getIntExtra(MainActivity.CAT_KEY, -1);
+        backdropCat = (ImageView) findViewById(R.id.backdrop);
+
+        if (choice == 0) {
+            backdropCat.setImageResource(R.drawable.babygirl2);
+            ctl.setTitle("Baby Girl");
+        }
+
+        else if (choice == 1) {
+            backdropCat.setImageResource(R.drawable.rocko2);
+            ctl.setTitle("Rocko");
+        }
+
+        else {
+            throw new IllegalStateException("Neither cat was chosen.");
+        }
+
+
     }
 
 }

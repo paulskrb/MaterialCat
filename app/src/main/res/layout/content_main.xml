@@ -14,7 +14,7 @@
     tools:showIn="@layout/app_bar_main">
 
     <android.support.v7.widget.CardView
-        android:id="@+id/catCard"
+        android:id="@+id/babygirlCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -54,6 +54,7 @@
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
+        android:id="@+id/rockoCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -87,8 +88,6 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"/>
 
         </LinearLayout>
-
-
 
     </android.support.v7.widget.CardView>
 
