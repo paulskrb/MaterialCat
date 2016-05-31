@@ -75,9 +75,9 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
 
             <TextView
+                android:id="@+id/info_text"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/ipsum1"/>
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
@@ -102,9 +102,10 @@
                         android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
 
                     <TextView
+                        android:id="@+id/likes_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/ipsum2"/>
+                        android:text=""/>
 
                 </LinearLayout>
 
@@ -129,9 +130,10 @@
                         android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
 
                     <TextView
+                        android:id="@+id/dislikes_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/ipsum3"/>
+                        android:text=""/>
 
                 </LinearLayout>
 
