@@ -82,8 +82,7 @@
             android:padding="2dp"
             android:background="?attr/colorPrimary"
             android:src="@drawable/rocko2"
-            android:scaleType="fitXY"
-            android:adjustViewBounds="true"/>
+            android:scaleType="centerCrop" />
 
         <LinearLayout
             android:id="@+id/rockoNameHolder"
